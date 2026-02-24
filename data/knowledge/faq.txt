@@ -14,13 +14,13 @@ Q: Can I bring my mortal spouse?
 A: Yes! We offer "Mixed Mortality Couples" packages. Mortal guests stay free but must sign extensive liability waivers. Protective amulets available at front desk ($50 deposit, refundable if not used against your spouse).
 
 Q: Do you have gift cards?
-A: Yes! "Eternal Stay" gift cards available in denominations of $50-$500 or 1-10 virgin souls. Perfect for birthdays, resurrections, and "Sorry I cursed you" occasions.
+A: Yes! "Eternal Stay" gift cards available in denominations of $50-$500 or 1-10 Monster Tokens. Perfect for birthdays, resurrections, and "Sorry I cursed you" occasions.
 
 Q: What's your refund policy for destroyed rooms?
-A: Normal monster damage (scratched walls, blood stains, ectoplasm residue) is expected and included. Excessive destruction (collapsed floors, dimensional rifts, spontaneous hellmouths) will be charged to your room. We understand accidents happen during full moons and thunderstorms.
+A: Normal monster damage (scratched walls, mysterious stains, ectoplasm residue) is expected and included. Excessive destruction (collapsed floors, dimensional rifts, spontaneous hellmouths) will be charged to your room. We understand accidents happen during full moons and thunderstorms.
 
 Q: Is there a loyalty program?
-A: Yes! "Immortal Rewards" - earn 1 point per dollar spent (or 10 points per soul). Benefits include:
+A: Yes! "Immortal Rewards" - earn 1 point per dollar spent (or 10 points per Monster Token). Benefits include:
    - 500 points: Free coffin upgrade
    - 1,000 points: Complimentary reanimation
    - 5,000 points: Week-long stay at any property
@@ -33,8 +33,8 @@ PROPERTY-SPECIFIC QUESTIONS
 
 VAMPIRE MANOR:
 
-Q: What blood types do you serve?
-A: All types available: A+, A-, B+, B-, AB+, AB-, O+, O-. We also carry rare types (Rh-null) and vintage reserves (pre-1900s). Type O-negative is our house special. All ethically sourced from willing donors or recently deceased.
+Q: What elixir varieties do you serve?
+A: All varieties available: A+, A-, B+, B-, AB+, AB-, O+, O- crimson elixir blends. We also carry rare vintage reserves (pre-1900s). Our house special is ethically crafted and exquisitely aged.
 
 Q: Can I go outside during the day?
 A: The manor grounds are 90% covered with UV-protective canopies. Sunny courtyard available for non-vampire guests. Complimentary SPF-Death sunscreen for brief outdoor exposure. Emergency coffins located every 50 feet for sudden sunshine.
@@ -43,7 +43,7 @@ Q: Do the coffins have WiFi?
 A: Yes! All coffins equipped with wireless charging and high-speed internet. Satin-lined for comfort, soundproof, and available in Twin, Queen, King, and California King sizes.
 
 Q: What if I accidentally bite another guest?
-A: Please report to front desk immediately. Victim will be offered complimentary transformation services or compensation of 1,000 Immortal Rewards points. Repeated offenses may result in garlic spray deterrent.
+A: Please report to front desk immediately. The affected guest will be offered complimentary transformation services or compensation of 1,000 Immortal Rewards points. Repeated offenses may result in garlic spray deterrent.
 
 WEREWOLF LODGE:
 
@@ -71,7 +71,7 @@ Q: Will the constant thunder keep me awake?
 A: White noise machines available upon request. Most guests find the eternal storm soothing. Earplugs at front desk for light sleepers. Ground-floor rooms experience less vibration.
 
 Q: What if I need body parts replaced?
-A: Our on-site surgeon (Dr. Stein Jr.) offers minor body part replacements. Spare parts catalog available in your room. We accept insurance from most dark magic providers. Limb matching services subject to availability.
+A: Our on-site specialist (Dr. Stein Jr.) offers enhancement and restoration services. Enhancement catalog available in your room. We accept insurance from most dark magic providers. Restoration services subject to availability.
 
 MUMMY RESORT:
 
@@ -82,7 +82,7 @@ Q: Do I need to bring my own bandages?
 A: Fresh bandages provided daily. Linen thread count: 800. Special Egyptian cotton available ($25 upgrade). Wrapping services: $50 (full body), $20 (touch-ups).
 
 Q: Can I be mummified during my stay?
-A: Partial mummification services available at Eternal Preservation Spa. Full mummification requires 40 days minimum stay. Organ removal optional. Consultation with certified embalmers required.
+A: Partial mummification services available at Eternal Preservation Spa. Full mummification requires 40 days minimum stay. Preservation ritual optional. Consultation with certified spa specialists required.
 
 Q: What language is the room service menu in?
 A: Hieroglyphics (with English translation). Decoder scarab provided in each room. Staff fluent in Ancient Egyptian, English, and several dead languages.
@@ -92,11 +92,11 @@ ZOMBIE B&B:
 Q: How decomposed is too decomposed?
 A: No such thing! All stages of decay welcome. We've hosted guests ranging from "freshly turned" to "mostly skeleton." Skin-holding-services available for advanced decomposition. Bring whatever parts you still have attached.
 
-Q: What if I lose a limb during my stay?
-A: Lost & Found department open 24/7. Limbs stored in refrigeration for up to 30 days. Reattachment services $50 per limb. Spare parts available for purchase if original cannot be located.
+Q: What if I lose an item during my stay?
+A: Lost & Found department open 24/7. Items stored in preservation for up to 30 days. Restoration services $50 per item. Replacement parts available if original cannot be located.
 
-Q: Are the brains really fresh?
-A: Yes! Farm-to-table, ethically sourced from recently deceased. Updated menu daily based on availability. Organic, free-range, grass-fed options. Vegetarian brains available (former vegetarians only).
+Q: Are the mystery morsels really fresh?
+A: Yes! Farm-to-table, ethically sourced and organically prepared. Updated menu daily based on availability. Free-range, sustainably grown options. Vegetarian mystery morsels available upon request.
 
 Q: Can I check in if I'm not a zombie?
 A: Non-zombies welcome! Heavily discounted rates for humans (we assume you won't be human long). Complimentary zombie bite insurance. Warning: No refunds if bitten by fellow guests.
@@ -132,7 +132,7 @@ Q: Can I make a reservation if I'm currently alive?
 A: "Pre-death" bookings accepted! Reserve your post-mortem accommodations now. Reservations transfer automatically upon your demise. Popular among terminally ill vampires-in-waiting.
 
 Q: Do you offer wedding packages?
-A: Yes! "Till Death Do Us Part (Again)" packages include: Gothic chapel, blood fountain, cursed wedding bands, reception in Dungeon Ballroom, honeymoon suite with view of cemetery. Reanimation ceremony upgrades available.
+A: Yes! "Till Death Do Us Part (Again)" packages include: Gothic chapel, crimson elixir fountain, enchanted wedding bands, reception in Dungeon Ballroom, honeymoon suite with view of cemetery. Reanimation ceremony upgrades available.
 
 ═══════════════════════════════════════════════════════════════════
 
@@ -142,13 +142,13 @@ Q: Can I order takeout?
 A: Room service available from all restaurants. Delivery via bat courier (Vampire Manor), lightning-fast service (Castle Frankenstein), or shambling delivery (Zombie B&B - please allow extra time).
 
 Q: Are there vegetarian options?
-A: Limited. Vampire Manor: Blood orange juice. Zombie B&B: Former vegetarian brains. Werewolf Lodge: Grass-fed options. We primarily cater to carnivorous undead. Salads available upon request (no guarantees of freshness).
+A: Limited. Vampire Manor: Blood orange juice. Zombie B&B: Vegetarian mystery morsels. Werewolf Lodge: Grass-fed options. We primarily cater to carnivorous undead. Salads available upon request (no guarantees of freshness).
 
-Q: Can I bring my own blood/brains/organs?
-A: Outside food permitted but corkage fee applies ($25 per container). Must be stored in provided mini-coffin-fridge. Cannot bring garlic-based products anywhere on premises.
+Q: Can I bring my own provisions?
+A: Outside provisions permitted but handling fee applies ($25 per container). Must be stored in provided mini-coffin-fridge. Cannot bring garlic-based products anywhere on premises.
 
 Q: Is there a bar?
-A: Multiple locations! Blood Bar (Vampire Manor), Primal Spirits (Werewolf Lodge), Shock-tail Lounge (Castle Frankenstein), Ethereal Spirits (Ghostly B&B). Happy hour: Midnight-2AM. Two-for-one souls on Fridays.
+A: Multiple locations! Elixir Bar (Vampire Manor), Primal Spirits (Werewolf Lodge), Shock-tail Lounge (Castle Frankenstein), Ethereal Spirits (Ghostly B&B). Happy hour: Midnight-2AM. Two-for-one Monster Tokens on Fridays.
 
 Q: Do you have room service?
 A: 24/7 availability! Menu includes all restaurant offerings plus late-night snacks. Delivery time varies by property and realm. Ghost servers can phase through walls for instant delivery.
@@ -180,7 +180,7 @@ Q: What happens if there's an exorcism attempt?
 A: Anti-exorcism wards protect all properties. However, if you're particularly susceptible, we provide holy water antidote and protective amulets. Emergency necromancer on-call 24/7.
 
 Q: Are there medical facilities?
-A: Full-service Monster Medicine Clinic on-site. Services: Reanimation, curse removal (attempts), limb reattachment, fang repair, silver extraction, stake removal, ectoplasm stabilization. Insurance accepted (Underworld PPO preferred).
+A: Full-service Monster Medicine Clinic on-site. Services: Reanimation, curse removal (attempts), restoration services, fang repair, silver remedy, splinter removal, ectoplasm stabilization. Insurance accepted (Underworld PPO preferred).
 
 Q: What if the sun rises unexpectedly?
 A: Vampire Manor has automatic blackout systems. UV sensors throughout property. Emergency coffins every 50 feet. Staff trained in rapid extraction. Sunscreen SPF-Death available at all times.
@@ -224,11 +224,11 @@ TESTIMONIALS FROM PAST GUESTS:
 
 ⭐⭐⭐⭐⭐ "Got reanimated twice during stay - excellent service!" - F. Stein, Castle Frankenstein
 
-⭐⭐⭐⭐⭐ "Brains were fresh and delicious!" - Walker Z., Zombie B&B
+⭐⭐⭐⭐⭐ "The mystery morsels were fresh and delicious!" - Walker Z., Zombie B&B
 
 ⭐⭐⭐⭐⭐ "Finally got closure on my murder!" - Casper G., Ghostly B&B
 
-⭐⭐⭐⭐⭐ "Worth every soul!" - Imhotep M., Mummy Resort
+⭐⭐⭐⭐⭐ "Worth every Monster Token!" - Imhotep M., Mummy Resort
 
 ═══════════════════════════════════════════════════════════════════
 
