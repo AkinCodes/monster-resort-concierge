@@ -531,7 +531,75 @@
     }
     .shell-cmd::before { content: '$ '; color: #8b949e; }
 
-  </style>
+  
+  /* ── 5-3-1 Reflection ── */
+  .reflection-531 {
+    margin-top: 1.25rem;
+    border: 2px solid #a5f3fc;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ecfeff;
+  }
+  .reflection-531-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #0e7490, #06b6d4);
+    color: white;
+  }
+  .reflection-531-badge {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    background: rgba(255,255,255,0.2);
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+  }
+  .reflection-531-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+  }
+  .reflection-531-body {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 700px) {
+    .reflection-531-body { grid-template-columns: 1fr; }
+  }
+  .reflection-group-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #0e7490;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.45rem;
+  }
+  .reflection-input {
+    width: 100%;
+    border: 1.5px solid #67e8f9;
+    border-radius: 7px;
+    padding: 0.42rem 0.65rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: #1e293b;
+    background: #fff;
+    margin-bottom: 0.3rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    display: block;
+  }
+  .reflection-input:focus {
+    outline: none;
+    border-color: #06b6d4;
+    box-shadow: 0 0 0 3px rgba(6,182,212,0.15);
+  }
+  .reflection-input::placeholder { color: #94a3b8; }
+</style>
 </head>
 <body>
 
@@ -691,6 +759,32 @@ return "anonymous"</pre>
           <label for="notes-35">Your Notes</label>
           <textarea id="notes-35" placeholder="Observations, questions, insights..." oninput="saveNotes(35, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_35_l1" type="text" placeholder="1." oninput="saveReflection(35,'l1',this.value)">
+              <input class="reflection-input" id="r531_35_l2" type="text" placeholder="2." oninput="saveReflection(35,'l2',this.value)">
+              <input class="reflection-input" id="r531_35_l3" type="text" placeholder="3." oninput="saveReflection(35,'l3',this.value)">
+              <input class="reflection-input" id="r531_35_l4" type="text" placeholder="4." oninput="saveReflection(35,'l4',this.value)">
+              <input class="reflection-input" id="r531_35_l5" type="text" placeholder="5." oninput="saveReflection(35,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_35_q1" type="text" placeholder="1." oninput="saveReflection(35,'q1',this.value)">
+              <input class="reflection-input" id="r531_35_q2" type="text" placeholder="2." oninput="saveReflection(35,'q2',this.value)">
+              <input class="reflection-input" id="r531_35_q3" type="text" placeholder="3." oninput="saveReflection(35,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_35_a1" type="text" placeholder="I will..." oninput="saveReflection(35,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -799,6 +893,32 @@ return "verified_user"</pre>
         <div class="notes-section">
           <label for="notes-36">Your Notes</label>
           <textarea id="notes-36" placeholder="Observations, questions, insights..." oninput="saveNotes(36, this.value)"></textarea>
+        </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_36_l1" type="text" placeholder="1." oninput="saveReflection(36,'l1',this.value)">
+              <input class="reflection-input" id="r531_36_l2" type="text" placeholder="2." oninput="saveReflection(36,'l2',this.value)">
+              <input class="reflection-input" id="r531_36_l3" type="text" placeholder="3." oninput="saveReflection(36,'l3',this.value)">
+              <input class="reflection-input" id="r531_36_l4" type="text" placeholder="4." oninput="saveReflection(36,'l4',this.value)">
+              <input class="reflection-input" id="r531_36_l5" type="text" placeholder="5." oninput="saveReflection(36,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_36_q1" type="text" placeholder="1." oninput="saveReflection(36,'q1',this.value)">
+              <input class="reflection-input" id="r531_36_q2" type="text" placeholder="2." oninput="saveReflection(36,'q2',this.value)">
+              <input class="reflection-input" id="r531_36_q3" type="text" placeholder="3." oninput="saveReflection(36,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_36_a1" type="text" placeholder="I will..." oninput="saveReflection(36,'a1',this.value)">
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -910,6 +1030,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <label for="notes-37">Your Notes</label>
           <textarea id="notes-37" placeholder="Observations, questions, insights..." oninput="saveNotes(37, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_37_l1" type="text" placeholder="1." oninput="saveReflection(37,'l1',this.value)">
+              <input class="reflection-input" id="r531_37_l2" type="text" placeholder="2." oninput="saveReflection(37,'l2',this.value)">
+              <input class="reflection-input" id="r531_37_l3" type="text" placeholder="3." oninput="saveReflection(37,'l3',this.value)">
+              <input class="reflection-input" id="r531_37_l4" type="text" placeholder="4." oninput="saveReflection(37,'l4',this.value)">
+              <input class="reflection-input" id="r531_37_l5" type="text" placeholder="5." oninput="saveReflection(37,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_37_q1" type="text" placeholder="1." oninput="saveReflection(37,'q1',this.value)">
+              <input class="reflection-input" id="r531_37_q2" type="text" placeholder="2." oninput="saveReflection(37,'q2',this.value)">
+              <input class="reflection-input" id="r531_37_q3" type="text" placeholder="3." oninput="saveReflection(37,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_37_a1" type="text" placeholder="I will..." oninput="saveReflection(37,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -1016,6 +1162,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
         <div class="notes-section">
           <label for="notes-38">Your Notes</label>
           <textarea id="notes-38" placeholder="Observations, questions, insights..." oninput="saveNotes(38, this.value)"></textarea>
+        </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_38_l1" type="text" placeholder="1." oninput="saveReflection(38,'l1',this.value)">
+              <input class="reflection-input" id="r531_38_l2" type="text" placeholder="2." oninput="saveReflection(38,'l2',this.value)">
+              <input class="reflection-input" id="r531_38_l3" type="text" placeholder="3." oninput="saveReflection(38,'l3',this.value)">
+              <input class="reflection-input" id="r531_38_l4" type="text" placeholder="4." oninput="saveReflection(38,'l4',this.value)">
+              <input class="reflection-input" id="r531_38_l5" type="text" placeholder="5." oninput="saveReflection(38,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_38_q1" type="text" placeholder="1." oninput="saveReflection(38,'q1',this.value)">
+              <input class="reflection-input" id="r531_38_q2" type="text" placeholder="2." oninput="saveReflection(38,'q2',this.value)">
+              <input class="reflection-input" id="r531_38_q3" type="text" placeholder="3." oninput="saveReflection(38,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_38_a1" type="text" placeholder="I will..." oninput="saveReflection(38,'a1',this.value)">
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -1125,6 +1297,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <label for="notes-39">Your Notes</label>
           <textarea id="notes-39" placeholder="Observations, questions, insights..." oninput="saveNotes(39, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_39_l1" type="text" placeholder="1." oninput="saveReflection(39,'l1',this.value)">
+              <input class="reflection-input" id="r531_39_l2" type="text" placeholder="2." oninput="saveReflection(39,'l2',this.value)">
+              <input class="reflection-input" id="r531_39_l3" type="text" placeholder="3." oninput="saveReflection(39,'l3',this.value)">
+              <input class="reflection-input" id="r531_39_l4" type="text" placeholder="4." oninput="saveReflection(39,'l4',this.value)">
+              <input class="reflection-input" id="r531_39_l5" type="text" placeholder="5." oninput="saveReflection(39,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_39_q1" type="text" placeholder="1." oninput="saveReflection(39,'q1',this.value)">
+              <input class="reflection-input" id="r531_39_q2" type="text" placeholder="2." oninput="saveReflection(39,'q2',this.value)">
+              <input class="reflection-input" id="r531_39_q3" type="text" placeholder="3." oninput="saveReflection(39,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_39_a1" type="text" placeholder="I will..." oninput="saveReflection(39,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -1232,6 +1430,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <label for="notes-40">Your Notes</label>
           <textarea id="notes-40" placeholder="Observations, questions, insights..." oninput="saveNotes(40, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_40_l1" type="text" placeholder="1." oninput="saveReflection(40,'l1',this.value)">
+              <input class="reflection-input" id="r531_40_l2" type="text" placeholder="2." oninput="saveReflection(40,'l2',this.value)">
+              <input class="reflection-input" id="r531_40_l3" type="text" placeholder="3." oninput="saveReflection(40,'l3',this.value)">
+              <input class="reflection-input" id="r531_40_l4" type="text" placeholder="4." oninput="saveReflection(40,'l4',this.value)">
+              <input class="reflection-input" id="r531_40_l5" type="text" placeholder="5." oninput="saveReflection(40,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_40_q1" type="text" placeholder="1." oninput="saveReflection(40,'q1',this.value)">
+              <input class="reflection-input" id="r531_40_q2" type="text" placeholder="2." oninput="saveReflection(40,'q2',this.value)">
+              <input class="reflection-input" id="r531_40_q3" type="text" placeholder="3." oninput="saveReflection(40,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_40_a1" type="text" placeholder="I will..." oninput="saveReflection(40,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -1338,6 +1562,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
         <div class="notes-section">
           <label for="notes-41">Your Notes</label>
           <textarea id="notes-41" placeholder="Observations, questions, insights..." oninput="saveNotes(41, this.value)"></textarea>
+        </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_41_l1" type="text" placeholder="1." oninput="saveReflection(41,'l1',this.value)">
+              <input class="reflection-input" id="r531_41_l2" type="text" placeholder="2." oninput="saveReflection(41,'l2',this.value)">
+              <input class="reflection-input" id="r531_41_l3" type="text" placeholder="3." oninput="saveReflection(41,'l3',this.value)">
+              <input class="reflection-input" id="r531_41_l4" type="text" placeholder="4." oninput="saveReflection(41,'l4',this.value)">
+              <input class="reflection-input" id="r531_41_l5" type="text" placeholder="5." oninput="saveReflection(41,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_41_q1" type="text" placeholder="1." oninput="saveReflection(41,'q1',this.value)">
+              <input class="reflection-input" id="r531_41_q2" type="text" placeholder="2." oninput="saveReflection(41,'q2',this.value)">
+              <input class="reflection-input" id="r531_41_q3" type="text" placeholder="3." oninput="saveReflection(41,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_41_a1" type="text" placeholder="I will..." oninput="saveReflection(41,'a1',this.value)">
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -1449,6 +1699,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <label for="notes-42">Your Notes</label>
           <textarea id="notes-42" placeholder="Observations, questions, insights..." oninput="saveNotes(42, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_42_l1" type="text" placeholder="1." oninput="saveReflection(42,'l1',this.value)">
+              <input class="reflection-input" id="r531_42_l2" type="text" placeholder="2." oninput="saveReflection(42,'l2',this.value)">
+              <input class="reflection-input" id="r531_42_l3" type="text" placeholder="3." oninput="saveReflection(42,'l3',this.value)">
+              <input class="reflection-input" id="r531_42_l4" type="text" placeholder="4." oninput="saveReflection(42,'l4',this.value)">
+              <input class="reflection-input" id="r531_42_l5" type="text" placeholder="5." oninput="saveReflection(42,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_42_q1" type="text" placeholder="1." oninput="saveReflection(42,'q1',this.value)">
+              <input class="reflection-input" id="r531_42_q2" type="text" placeholder="2." oninput="saveReflection(42,'q2',this.value)">
+              <input class="reflection-input" id="r531_42_q3" type="text" placeholder="3." oninput="saveReflection(42,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_42_a1" type="text" placeholder="I will..." oninput="saveReflection(42,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -1557,6 +1833,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
         <div class="notes-section">
           <label for="notes-43">Your Notes</label>
           <textarea id="notes-43" placeholder="Observations, questions, insights..." oninput="saveNotes(43, this.value)"></textarea>
+        </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_43_l1" type="text" placeholder="1." oninput="saveReflection(43,'l1',this.value)">
+              <input class="reflection-input" id="r531_43_l2" type="text" placeholder="2." oninput="saveReflection(43,'l2',this.value)">
+              <input class="reflection-input" id="r531_43_l3" type="text" placeholder="3." oninput="saveReflection(43,'l3',this.value)">
+              <input class="reflection-input" id="r531_43_l4" type="text" placeholder="4." oninput="saveReflection(43,'l4',this.value)">
+              <input class="reflection-input" id="r531_43_l5" type="text" placeholder="5." oninput="saveReflection(43,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_43_q1" type="text" placeholder="1." oninput="saveReflection(43,'q1',this.value)">
+              <input class="reflection-input" id="r531_43_q2" type="text" placeholder="2." oninput="saveReflection(43,'q2',this.value)">
+              <input class="reflection-input" id="r531_43_q3" type="text" placeholder="3." oninput="saveReflection(43,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_43_a1" type="text" placeholder="I will..." oninput="saveReflection(43,'a1',this.value)">
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -1667,6 +1969,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <label for="notes-44">Your Notes</label>
           <textarea id="notes-44" placeholder="Observations, questions, insights..." oninput="saveNotes(44, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_44_l1" type="text" placeholder="1." oninput="saveReflection(44,'l1',this.value)">
+              <input class="reflection-input" id="r531_44_l2" type="text" placeholder="2." oninput="saveReflection(44,'l2',this.value)">
+              <input class="reflection-input" id="r531_44_l3" type="text" placeholder="3." oninput="saveReflection(44,'l3',this.value)">
+              <input class="reflection-input" id="r531_44_l4" type="text" placeholder="4." oninput="saveReflection(44,'l4',this.value)">
+              <input class="reflection-input" id="r531_44_l5" type="text" placeholder="5." oninput="saveReflection(44,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_44_q1" type="text" placeholder="1." oninput="saveReflection(44,'q1',this.value)">
+              <input class="reflection-input" id="r531_44_q2" type="text" placeholder="2." oninput="saveReflection(44,'q2',this.value)">
+              <input class="reflection-input" id="r531_44_q3" type="text" placeholder="3." oninput="saveReflection(44,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_44_a1" type="text" placeholder="I will..." oninput="saveReflection(44,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -1774,6 +2102,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
         <div class="notes-section">
           <label for="notes-45">Your Notes</label>
           <textarea id="notes-45" placeholder="Observations, questions, insights..." oninput="saveNotes(45, this.value)"></textarea>
+        </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_45_l1" type="text" placeholder="1." oninput="saveReflection(45,'l1',this.value)">
+              <input class="reflection-input" id="r531_45_l2" type="text" placeholder="2." oninput="saveReflection(45,'l2',this.value)">
+              <input class="reflection-input" id="r531_45_l3" type="text" placeholder="3." oninput="saveReflection(45,'l3',this.value)">
+              <input class="reflection-input" id="r531_45_l4" type="text" placeholder="4." oninput="saveReflection(45,'l4',this.value)">
+              <input class="reflection-input" id="r531_45_l5" type="text" placeholder="5." oninput="saveReflection(45,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_45_q1" type="text" placeholder="1." oninput="saveReflection(45,'q1',this.value)">
+              <input class="reflection-input" id="r531_45_q2" type="text" placeholder="2." oninput="saveReflection(45,'q2',this.value)">
+              <input class="reflection-input" id="r531_45_q3" type="text" placeholder="3." oninput="saveReflection(45,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_45_a1" type="text" placeholder="I will..." oninput="saveReflection(45,'a1',this.value)">
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -1884,6 +2238,32 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
         <div class="notes-section">
           <label for="notes-46">Your Notes</label>
           <textarea id="notes-46" placeholder="Observations, questions, insights..." oninput="saveNotes(46, this.value)"></textarea>
+        </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_46_l1" type="text" placeholder="1." oninput="saveReflection(46,'l1',this.value)">
+              <input class="reflection-input" id="r531_46_l2" type="text" placeholder="2." oninput="saveReflection(46,'l2',this.value)">
+              <input class="reflection-input" id="r531_46_l3" type="text" placeholder="3." oninput="saveReflection(46,'l3',this.value)">
+              <input class="reflection-input" id="r531_46_l4" type="text" placeholder="4." oninput="saveReflection(46,'l4',this.value)">
+              <input class="reflection-input" id="r531_46_l5" type="text" placeholder="5." oninput="saveReflection(46,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_46_q1" type="text" placeholder="1." oninput="saveReflection(46,'q1',this.value)">
+              <input class="reflection-input" id="r531_46_q2" type="text" placeholder="2." oninput="saveReflection(46,'q2',this.value)">
+              <input class="reflection-input" id="r531_46_q3" type="text" placeholder="3." oninput="saveReflection(46,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_46_a1" type="text" placeholder="I will..." oninput="saveReflection(46,'a1',this.value)">
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -1997,6 +2377,32 @@ session_id = request.session_id</pre>
           <label for="notes-47">Your Notes</label>
           <textarea id="notes-47" placeholder="Observations, questions, insights..." oninput="saveNotes(47, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_47_l1" type="text" placeholder="1." oninput="saveReflection(47,'l1',this.value)">
+              <input class="reflection-input" id="r531_47_l2" type="text" placeholder="2." oninput="saveReflection(47,'l2',this.value)">
+              <input class="reflection-input" id="r531_47_l3" type="text" placeholder="3." oninput="saveReflection(47,'l3',this.value)">
+              <input class="reflection-input" id="r531_47_l4" type="text" placeholder="4." oninput="saveReflection(47,'l4',this.value)">
+              <input class="reflection-input" id="r531_47_l5" type="text" placeholder="5." oninput="saveReflection(47,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_47_q1" type="text" placeholder="1." oninput="saveReflection(47,'q1',this.value)">
+              <input class="reflection-input" id="r531_47_q2" type="text" placeholder="2." oninput="saveReflection(47,'q2',this.value)">
+              <input class="reflection-input" id="r531_47_q3" type="text" placeholder="3." oninput="saveReflection(47,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_47_a1" type="text" placeholder="I will..." oninput="saveReflection(47,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -2105,6 +2511,32 @@ session_id = request.session_id</pre>
         <div class="notes-section">
           <label for="notes-48">Your Notes</label>
           <textarea id="notes-48" placeholder="Observations, questions, insights..." oninput="saveNotes(48, this.value)"></textarea>
+        </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_48_l1" type="text" placeholder="1." oninput="saveReflection(48,'l1',this.value)">
+              <input class="reflection-input" id="r531_48_l2" type="text" placeholder="2." oninput="saveReflection(48,'l2',this.value)">
+              <input class="reflection-input" id="r531_48_l3" type="text" placeholder="3." oninput="saveReflection(48,'l3',this.value)">
+              <input class="reflection-input" id="r531_48_l4" type="text" placeholder="4." oninput="saveReflection(48,'l4',this.value)">
+              <input class="reflection-input" id="r531_48_l5" type="text" placeholder="5." oninput="saveReflection(48,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_48_q1" type="text" placeholder="1." oninput="saveReflection(48,'q1',this.value)">
+              <input class="reflection-input" id="r531_48_q2" type="text" placeholder="2." oninput="saveReflection(48,'q2',this.value)">
+              <input class="reflection-input" id="r531_48_q3" type="text" placeholder="3." oninput="saveReflection(48,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_48_a1" type="text" placeholder="I will..." oninput="saveReflection(48,'a1',this.value)">
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -2215,6 +2647,32 @@ session_id = request.session_id</pre>
           <label for="notes-49">Your Notes</label>
           <textarea id="notes-49" placeholder="Observations, questions, insights..." oninput="saveNotes(49, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_49_l1" type="text" placeholder="1." oninput="saveReflection(49,'l1',this.value)">
+              <input class="reflection-input" id="r531_49_l2" type="text" placeholder="2." oninput="saveReflection(49,'l2',this.value)">
+              <input class="reflection-input" id="r531_49_l3" type="text" placeholder="3." oninput="saveReflection(49,'l3',this.value)">
+              <input class="reflection-input" id="r531_49_l4" type="text" placeholder="4." oninput="saveReflection(49,'l4',this.value)">
+              <input class="reflection-input" id="r531_49_l5" type="text" placeholder="5." oninput="saveReflection(49,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_49_q1" type="text" placeholder="1." oninput="saveReflection(49,'q1',this.value)">
+              <input class="reflection-input" id="r531_49_q2" type="text" placeholder="2." oninput="saveReflection(49,'q2',this.value)">
+              <input class="reflection-input" id="r531_49_q3" type="text" placeholder="3." oninput="saveReflection(49,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_49_a1" type="text" placeholder="I will..." oninput="saveReflection(49,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -2322,6 +2780,32 @@ session_id = request.session_id</pre>
         <div class="notes-section">
           <label for="notes-50">Your Notes</label>
           <textarea id="notes-50" placeholder="Observations, questions, insights..." oninput="saveNotes(50, this.value)"></textarea>
+        </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_50_l1" type="text" placeholder="1." oninput="saveReflection(50,'l1',this.value)">
+              <input class="reflection-input" id="r531_50_l2" type="text" placeholder="2." oninput="saveReflection(50,'l2',this.value)">
+              <input class="reflection-input" id="r531_50_l3" type="text" placeholder="3." oninput="saveReflection(50,'l3',this.value)">
+              <input class="reflection-input" id="r531_50_l4" type="text" placeholder="4." oninput="saveReflection(50,'l4',this.value)">
+              <input class="reflection-input" id="r531_50_l5" type="text" placeholder="5." oninput="saveReflection(50,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_50_q1" type="text" placeholder="1." oninput="saveReflection(50,'q1',this.value)">
+              <input class="reflection-input" id="r531_50_q2" type="text" placeholder="2." oninput="saveReflection(50,'q2',this.value)">
+              <input class="reflection-input" id="r531_50_q3" type="text" placeholder="3." oninput="saveReflection(50,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_50_a1" type="text" placeholder="I will..." oninput="saveReflection(50,'a1',this.value)">
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -2435,6 +2919,32 @@ self.reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")</pre>
           <label for="notes-51">Your Notes</label>
           <textarea id="notes-51" placeholder="Observations, questions, insights..." oninput="saveNotes(51, this.value)"></textarea>
         </div>
+        <div class="reflection-531">
+          <div class="reflection-531-header">
+            <span class="reflection-531-badge">5 · 3 · 1</span>
+            <span class="reflection-531-title">Reflection</span>
+          </div>
+          <div class="reflection-531-body">
+            <div class="reflection-group">
+              <div class="reflection-group-label">5 Things I Learned</div>
+              <input class="reflection-input" id="r531_51_l1" type="text" placeholder="1." oninput="saveReflection(51,'l1',this.value)">
+              <input class="reflection-input" id="r531_51_l2" type="text" placeholder="2." oninput="saveReflection(51,'l2',this.value)">
+              <input class="reflection-input" id="r531_51_l3" type="text" placeholder="3." oninput="saveReflection(51,'l3',this.value)">
+              <input class="reflection-input" id="r531_51_l4" type="text" placeholder="4." oninput="saveReflection(51,'l4',this.value)">
+              <input class="reflection-input" id="r531_51_l5" type="text" placeholder="5." oninput="saveReflection(51,'l5',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">3 Questions I Still Have</div>
+              <input class="reflection-input" id="r531_51_q1" type="text" placeholder="1." oninput="saveReflection(51,'q1',this.value)">
+              <input class="reflection-input" id="r531_51_q2" type="text" placeholder="2." oninput="saveReflection(51,'q2',this.value)">
+              <input class="reflection-input" id="r531_51_q3" type="text" placeholder="3." oninput="saveReflection(51,'q3',this.value)">
+            </div>
+            <div class="reflection-group">
+              <div class="reflection-group-label">1 Action I'll Take</div>
+              <input class="reflection-input" id="r531_51_a1" type="text" placeholder="I will..." oninput="saveReflection(51,'a1',this.value)">
+            </div>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -2502,6 +3012,24 @@ self.reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")</pre>
     if (card) card.classList.toggle('completed', checked);
     updateProgress();
   };
+
+  // ── 5-3-1 Reflection ──
+  window.saveReflection = function(id, field, value) {
+    const state = getState();
+    if (!state.r531) state.r531 = {};
+    state.r531[id + '_' + field] = value;
+    saveState(state);
+  };
+
+  function loadReflections(id) {
+    const state = getState();
+    if (!state.r531) return;
+    ['l1','l2','l3','l4','l5','q1','q2','q3','a1'].forEach(function(field) {
+      const el = document.getElementById('r531_' + id + '_' + field);
+      const val = state.r531[id + '_' + field];
+      if (el && val !== undefined) el.value = val;
+    });
+  }
 
   // ── Notes ────────────────────────────────────────
   window.saveNotes = function(id, value) {
@@ -2610,6 +3138,8 @@ self.reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")</pre>
       if (textarea && state.notes[id]) {
         textarea.value = state.notes[id];
       }
+      // Restore 5-3-1 reflections
+      loadReflections(id);
     });
 
     updateProgress();

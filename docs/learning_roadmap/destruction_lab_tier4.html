@@ -494,7 +494,75 @@
     }
     .shell-cmd::before { content: '$ '; color: #8b949e; }
 
-  </style>
+  
+  /* ── 5-3-1 Reflection ── */
+  .reflection-531 {
+    margin-top: 1.25rem;
+    border: 2px solid #e9d5ff;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #faf5ff;
+  }
+  .reflection-531-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+    color: white;
+  }
+  .reflection-531-badge {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    background: rgba(255,255,255,0.2);
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+  }
+  .reflection-531-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+  }
+  .reflection-531-body {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 700px) {
+    .reflection-531-body { grid-template-columns: 1fr; }
+  }
+  .reflection-group-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.45rem;
+  }
+  .reflection-input {
+    width: 100%;
+    border: 1.5px solid #c4b5fd;
+    border-radius: 7px;
+    padding: 0.42rem 0.65rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: #1e293b;
+    background: #fff;
+    margin-bottom: 0.3rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    display: block;
+  }
+  .reflection-input:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+  }
+  .reflection-input::placeholder { color: #94a3b8; }
+</style>
 </head>
 <body>
 
@@ -656,6 +724,32 @@
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(52, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_52_l1" type="text" placeholder="1." oninput="saveReflection(52,'l1',this.value)">
+            <input class="reflection-input" id="r531_52_l2" type="text" placeholder="2." oninput="saveReflection(52,'l2',this.value)">
+            <input class="reflection-input" id="r531_52_l3" type="text" placeholder="3." oninput="saveReflection(52,'l3',this.value)">
+            <input class="reflection-input" id="r531_52_l4" type="text" placeholder="4." oninput="saveReflection(52,'l4',this.value)">
+            <input class="reflection-input" id="r531_52_l5" type="text" placeholder="5." oninput="saveReflection(52,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_52_q1" type="text" placeholder="1." oninput="saveReflection(52,'q1',this.value)">
+            <input class="reflection-input" id="r531_52_q2" type="text" placeholder="2." oninput="saveReflection(52,'q2',this.value)">
+            <input class="reflection-input" id="r531_52_q3" type="text" placeholder="3." oninput="saveReflection(52,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_52_a1" type="text" placeholder="I will..." oninput="saveReflection(52,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -764,6 +858,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(53, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_53_l1" type="text" placeholder="1." oninput="saveReflection(53,'l1',this.value)">
+            <input class="reflection-input" id="r531_53_l2" type="text" placeholder="2." oninput="saveReflection(53,'l2',this.value)">
+            <input class="reflection-input" id="r531_53_l3" type="text" placeholder="3." oninput="saveReflection(53,'l3',this.value)">
+            <input class="reflection-input" id="r531_53_l4" type="text" placeholder="4." oninput="saveReflection(53,'l4',this.value)">
+            <input class="reflection-input" id="r531_53_l5" type="text" placeholder="5." oninput="saveReflection(53,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_53_q1" type="text" placeholder="1." oninput="saveReflection(53,'q1',this.value)">
+            <input class="reflection-input" id="r531_53_q2" type="text" placeholder="2." oninput="saveReflection(53,'q2',this.value)">
+            <input class="reflection-input" id="r531_53_q3" type="text" placeholder="3." oninput="saveReflection(53,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_53_a1" type="text" placeholder="I will..." oninput="saveReflection(53,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -871,6 +991,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(54, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_54_l1" type="text" placeholder="1." oninput="saveReflection(54,'l1',this.value)">
+            <input class="reflection-input" id="r531_54_l2" type="text" placeholder="2." oninput="saveReflection(54,'l2',this.value)">
+            <input class="reflection-input" id="r531_54_l3" type="text" placeholder="3." oninput="saveReflection(54,'l3',this.value)">
+            <input class="reflection-input" id="r531_54_l4" type="text" placeholder="4." oninput="saveReflection(54,'l4',this.value)">
+            <input class="reflection-input" id="r531_54_l5" type="text" placeholder="5." oninput="saveReflection(54,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_54_q1" type="text" placeholder="1." oninput="saveReflection(54,'q1',this.value)">
+            <input class="reflection-input" id="r531_54_q2" type="text" placeholder="2." oninput="saveReflection(54,'q2',this.value)">
+            <input class="reflection-input" id="r531_54_q3" type="text" placeholder="3." oninput="saveReflection(54,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_54_a1" type="text" placeholder="I will..." oninput="saveReflection(54,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -976,6 +1122,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
       <div class="notes-area">
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(55, this.value)"></textarea>
+      </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_55_l1" type="text" placeholder="1." oninput="saveReflection(55,'l1',this.value)">
+            <input class="reflection-input" id="r531_55_l2" type="text" placeholder="2." oninput="saveReflection(55,'l2',this.value)">
+            <input class="reflection-input" id="r531_55_l3" type="text" placeholder="3." oninput="saveReflection(55,'l3',this.value)">
+            <input class="reflection-input" id="r531_55_l4" type="text" placeholder="4." oninput="saveReflection(55,'l4',this.value)">
+            <input class="reflection-input" id="r531_55_l5" type="text" placeholder="5." oninput="saveReflection(55,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_55_q1" type="text" placeholder="1." oninput="saveReflection(55,'q1',this.value)">
+            <input class="reflection-input" id="r531_55_q2" type="text" placeholder="2." oninput="saveReflection(55,'q2',this.value)">
+            <input class="reflection-input" id="r531_55_q3" type="text" placeholder="3." oninput="saveReflection(55,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_55_a1" type="text" placeholder="I will..." oninput="saveReflection(55,'a1',this.value)">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1083,6 +1255,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(56, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_56_l1" type="text" placeholder="1." oninput="saveReflection(56,'l1',this.value)">
+            <input class="reflection-input" id="r531_56_l2" type="text" placeholder="2." oninput="saveReflection(56,'l2',this.value)">
+            <input class="reflection-input" id="r531_56_l3" type="text" placeholder="3." oninput="saveReflection(56,'l3',this.value)">
+            <input class="reflection-input" id="r531_56_l4" type="text" placeholder="4." oninput="saveReflection(56,'l4',this.value)">
+            <input class="reflection-input" id="r531_56_l5" type="text" placeholder="5." oninput="saveReflection(56,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_56_q1" type="text" placeholder="1." oninput="saveReflection(56,'q1',this.value)">
+            <input class="reflection-input" id="r531_56_q2" type="text" placeholder="2." oninput="saveReflection(56,'q2',this.value)">
+            <input class="reflection-input" id="r531_56_q3" type="text" placeholder="3." oninput="saveReflection(56,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_56_a1" type="text" placeholder="I will..." oninput="saveReflection(56,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1189,6 +1387,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(57, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_57_l1" type="text" placeholder="1." oninput="saveReflection(57,'l1',this.value)">
+            <input class="reflection-input" id="r531_57_l2" type="text" placeholder="2." oninput="saveReflection(57,'l2',this.value)">
+            <input class="reflection-input" id="r531_57_l3" type="text" placeholder="3." oninput="saveReflection(57,'l3',this.value)">
+            <input class="reflection-input" id="r531_57_l4" type="text" placeholder="4." oninput="saveReflection(57,'l4',this.value)">
+            <input class="reflection-input" id="r531_57_l5" type="text" placeholder="5." oninput="saveReflection(57,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_57_q1" type="text" placeholder="1." oninput="saveReflection(57,'q1',this.value)">
+            <input class="reflection-input" id="r531_57_q2" type="text" placeholder="2." oninput="saveReflection(57,'q2',this.value)">
+            <input class="reflection-input" id="r531_57_q3" type="text" placeholder="3." oninput="saveReflection(57,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_57_a1" type="text" placeholder="I will..." oninput="saveReflection(57,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1294,6 +1518,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
       <div class="notes-area">
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(58, this.value)"></textarea>
+      </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_58_l1" type="text" placeholder="1." oninput="saveReflection(58,'l1',this.value)">
+            <input class="reflection-input" id="r531_58_l2" type="text" placeholder="2." oninput="saveReflection(58,'l2',this.value)">
+            <input class="reflection-input" id="r531_58_l3" type="text" placeholder="3." oninput="saveReflection(58,'l3',this.value)">
+            <input class="reflection-input" id="r531_58_l4" type="text" placeholder="4." oninput="saveReflection(58,'l4',this.value)">
+            <input class="reflection-input" id="r531_58_l5" type="text" placeholder="5." oninput="saveReflection(58,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_58_q1" type="text" placeholder="1." oninput="saveReflection(58,'q1',this.value)">
+            <input class="reflection-input" id="r531_58_q2" type="text" placeholder="2." oninput="saveReflection(58,'q2',this.value)">
+            <input class="reflection-input" id="r531_58_q3" type="text" placeholder="3." oninput="saveReflection(58,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_58_a1" type="text" placeholder="I will..." oninput="saveReflection(58,'a1',this.value)">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1406,6 +1656,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(59, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_59_l1" type="text" placeholder="1." oninput="saveReflection(59,'l1',this.value)">
+            <input class="reflection-input" id="r531_59_l2" type="text" placeholder="2." oninput="saveReflection(59,'l2',this.value)">
+            <input class="reflection-input" id="r531_59_l3" type="text" placeholder="3." oninput="saveReflection(59,'l3',this.value)">
+            <input class="reflection-input" id="r531_59_l4" type="text" placeholder="4." oninput="saveReflection(59,'l4',this.value)">
+            <input class="reflection-input" id="r531_59_l5" type="text" placeholder="5." oninput="saveReflection(59,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_59_q1" type="text" placeholder="1." oninput="saveReflection(59,'q1',this.value)">
+            <input class="reflection-input" id="r531_59_q2" type="text" placeholder="2." oninput="saveReflection(59,'q2',this.value)">
+            <input class="reflection-input" id="r531_59_q3" type="text" placeholder="3." oninput="saveReflection(59,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_59_a1" type="text" placeholder="I will..." oninput="saveReflection(59,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1514,6 +1790,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(60, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_60_l1" type="text" placeholder="1." oninput="saveReflection(60,'l1',this.value)">
+            <input class="reflection-input" id="r531_60_l2" type="text" placeholder="2." oninput="saveReflection(60,'l2',this.value)">
+            <input class="reflection-input" id="r531_60_l3" type="text" placeholder="3." oninput="saveReflection(60,'l3',this.value)">
+            <input class="reflection-input" id="r531_60_l4" type="text" placeholder="4." oninput="saveReflection(60,'l4',this.value)">
+            <input class="reflection-input" id="r531_60_l5" type="text" placeholder="5." oninput="saveReflection(60,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_60_q1" type="text" placeholder="1." oninput="saveReflection(60,'q1',this.value)">
+            <input class="reflection-input" id="r531_60_q2" type="text" placeholder="2." oninput="saveReflection(60,'q2',this.value)">
+            <input class="reflection-input" id="r531_60_q3" type="text" placeholder="3." oninput="saveReflection(60,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_60_a1" type="text" placeholder="I will..." oninput="saveReflection(60,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1620,6 +1922,32 @@ MEDIUM_THRESHOLD = 0.7  # was 0.4</div>
       <div class="notes-area">
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(61, this.value)"></textarea>
+      </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_61_l1" type="text" placeholder="1." oninput="saveReflection(61,'l1',this.value)">
+            <input class="reflection-input" id="r531_61_l2" type="text" placeholder="2." oninput="saveReflection(61,'l2',this.value)">
+            <input class="reflection-input" id="r531_61_l3" type="text" placeholder="3." oninput="saveReflection(61,'l3',this.value)">
+            <input class="reflection-input" id="r531_61_l4" type="text" placeholder="4." oninput="saveReflection(61,'l4',this.value)">
+            <input class="reflection-input" id="r531_61_l5" type="text" placeholder="5." oninput="saveReflection(61,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_61_q1" type="text" placeholder="1." oninput="saveReflection(61,'q1',this.value)">
+            <input class="reflection-input" id="r531_61_q2" type="text" placeholder="2." oninput="saveReflection(61,'q2',this.value)">
+            <input class="reflection-input" id="r531_61_q3" type="text" placeholder="3." oninput="saveReflection(61,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_61_a1" type="text" placeholder="I will..." oninput="saveReflection(61,'a1',this.value)">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1732,6 +2060,32 @@ import logging; logging.info(f'Environment: {self.environment}')</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(62, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_62_l1" type="text" placeholder="1." oninput="saveReflection(62,'l1',this.value)">
+            <input class="reflection-input" id="r531_62_l2" type="text" placeholder="2." oninput="saveReflection(62,'l2',this.value)">
+            <input class="reflection-input" id="r531_62_l3" type="text" placeholder="3." oninput="saveReflection(62,'l3',this.value)">
+            <input class="reflection-input" id="r531_62_l4" type="text" placeholder="4." oninput="saveReflection(62,'l4',this.value)">
+            <input class="reflection-input" id="r531_62_l5" type="text" placeholder="5." oninput="saveReflection(62,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_62_q1" type="text" placeholder="1." oninput="saveReflection(62,'q1',this.value)">
+            <input class="reflection-input" id="r531_62_q2" type="text" placeholder="2." oninput="saveReflection(62,'q2',this.value)">
+            <input class="reflection-input" id="r531_62_q3" type="text" placeholder="3." oninput="saveReflection(62,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_62_a1" type="text" placeholder="I will..." oninput="saveReflection(62,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1842,6 +2196,32 @@ import logging; logging.info(f'Environment: {self.environment}')</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(63, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_63_l1" type="text" placeholder="1." oninput="saveReflection(63,'l1',this.value)">
+            <input class="reflection-input" id="r531_63_l2" type="text" placeholder="2." oninput="saveReflection(63,'l2',this.value)">
+            <input class="reflection-input" id="r531_63_l3" type="text" placeholder="3." oninput="saveReflection(63,'l3',this.value)">
+            <input class="reflection-input" id="r531_63_l4" type="text" placeholder="4." oninput="saveReflection(63,'l4',this.value)">
+            <input class="reflection-input" id="r531_63_l5" type="text" placeholder="5." oninput="saveReflection(63,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_63_q1" type="text" placeholder="1." oninput="saveReflection(63,'q1',this.value)">
+            <input class="reflection-input" id="r531_63_q2" type="text" placeholder="2." oninput="saveReflection(63,'q2',this.value)">
+            <input class="reflection-input" id="r531_63_q3" type="text" placeholder="3." oninput="saveReflection(63,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_63_a1" type="text" placeholder="I will..." oninput="saveReflection(63,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1948,6 +2328,32 @@ import logging; logging.info(f'Environment: {self.environment}')</div>
       <div class="notes-area">
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(64, this.value)"></textarea>
+      </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_64_l1" type="text" placeholder="1." oninput="saveReflection(64,'l1',this.value)">
+            <input class="reflection-input" id="r531_64_l2" type="text" placeholder="2." oninput="saveReflection(64,'l2',this.value)">
+            <input class="reflection-input" id="r531_64_l3" type="text" placeholder="3." oninput="saveReflection(64,'l3',this.value)">
+            <input class="reflection-input" id="r531_64_l4" type="text" placeholder="4." oninput="saveReflection(64,'l4',this.value)">
+            <input class="reflection-input" id="r531_64_l5" type="text" placeholder="5." oninput="saveReflection(64,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_64_q1" type="text" placeholder="1." oninput="saveReflection(64,'q1',this.value)">
+            <input class="reflection-input" id="r531_64_q2" type="text" placeholder="2." oninput="saveReflection(64,'q2',this.value)">
+            <input class="reflection-input" id="r531_64_q3" type="text" placeholder="3." oninput="saveReflection(64,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_64_a1" type="text" placeholder="I will..." oninput="saveReflection(64,'a1',this.value)">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2056,6 +2462,32 @@ import logging; logging.info(f'Environment: {self.environment}')</div>
       <div class="notes-area">
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(65, this.value)"></textarea>
+      </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_65_l1" type="text" placeholder="1." oninput="saveReflection(65,'l1',this.value)">
+            <input class="reflection-input" id="r531_65_l2" type="text" placeholder="2." oninput="saveReflection(65,'l2',this.value)">
+            <input class="reflection-input" id="r531_65_l3" type="text" placeholder="3." oninput="saveReflection(65,'l3',this.value)">
+            <input class="reflection-input" id="r531_65_l4" type="text" placeholder="4." oninput="saveReflection(65,'l4',this.value)">
+            <input class="reflection-input" id="r531_65_l5" type="text" placeholder="5." oninput="saveReflection(65,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_65_q1" type="text" placeholder="1." oninput="saveReflection(65,'q1',this.value)">
+            <input class="reflection-input" id="r531_65_q2" type="text" placeholder="2." oninput="saveReflection(65,'q2',this.value)">
+            <input class="reflection-input" id="r531_65_q3" type="text" placeholder="3." oninput="saveReflection(65,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_65_a1" type="text" placeholder="I will..." oninput="saveReflection(65,'a1',this.value)">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2166,6 +2598,32 @@ import logging; logging.info(f'Environment: {self.environment}')</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(66, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_66_l1" type="text" placeholder="1." oninput="saveReflection(66,'l1',this.value)">
+            <input class="reflection-input" id="r531_66_l2" type="text" placeholder="2." oninput="saveReflection(66,'l2',this.value)">
+            <input class="reflection-input" id="r531_66_l3" type="text" placeholder="3." oninput="saveReflection(66,'l3',this.value)">
+            <input class="reflection-input" id="r531_66_l4" type="text" placeholder="4." oninput="saveReflection(66,'l4',this.value)">
+            <input class="reflection-input" id="r531_66_l5" type="text" placeholder="5." oninput="saveReflection(66,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_66_q1" type="text" placeholder="1." oninput="saveReflection(66,'q1',this.value)">
+            <input class="reflection-input" id="r531_66_q2" type="text" placeholder="2." oninput="saveReflection(66,'q2',this.value)">
+            <input class="reflection-input" id="r531_66_q3" type="text" placeholder="3." oninput="saveReflection(66,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_66_a1" type="text" placeholder="I will..." oninput="saveReflection(66,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2273,6 +2731,32 @@ import logging; logging.info(f'Environment: {self.environment}')</div>
         <label>Notes</label>
         <textarea placeholder="Your observations..." oninput="saveNotes(67, this.value)"></textarea>
       </div>
+      <div class="reflection-531">
+        <div class="reflection-531-header">
+          <span class="reflection-531-badge">5 · 3 · 1</span>
+          <span class="reflection-531-title">Reflection</span>
+        </div>
+        <div class="reflection-531-body">
+          <div class="reflection-group">
+            <div class="reflection-group-label">5 Things I Learned</div>
+            <input class="reflection-input" id="r531_67_l1" type="text" placeholder="1." oninput="saveReflection(67,'l1',this.value)">
+            <input class="reflection-input" id="r531_67_l2" type="text" placeholder="2." oninput="saveReflection(67,'l2',this.value)">
+            <input class="reflection-input" id="r531_67_l3" type="text" placeholder="3." oninput="saveReflection(67,'l3',this.value)">
+            <input class="reflection-input" id="r531_67_l4" type="text" placeholder="4." oninput="saveReflection(67,'l4',this.value)">
+            <input class="reflection-input" id="r531_67_l5" type="text" placeholder="5." oninput="saveReflection(67,'l5',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">3 Questions I Still Have</div>
+            <input class="reflection-input" id="r531_67_q1" type="text" placeholder="1." oninput="saveReflection(67,'q1',this.value)">
+            <input class="reflection-input" id="r531_67_q2" type="text" placeholder="2." oninput="saveReflection(67,'q2',this.value)">
+            <input class="reflection-input" id="r531_67_q3" type="text" placeholder="3." oninput="saveReflection(67,'q3',this.value)">
+          </div>
+          <div class="reflection-group">
+            <div class="reflection-group-label">1 Action I'll Take</div>
+            <input class="reflection-input" id="r531_67_a1" type="text" placeholder="I will..." oninput="saveReflection(67,'a1',this.value)">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2335,6 +2819,22 @@ import logging; logging.info(f'Environment: {self.environment}')</div>
     localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
   }
 
+  // ── 5-3-1 Reflection ──
+  window.saveReflection = function(id, field, value) {
+    const state = getState();
+    state['r531_' + id + '_' + field] = value;
+    setState(state);
+  };
+
+  function loadReflections(id) {
+    const state = getState();
+    ['l1','l2','l3','l4','l5','q1','q2','q3','a1'].forEach(function(field) {
+      const el = document.getElementById('r531_' + id + '_' + field);
+      const val = state['r531_' + id + '_' + field];
+      if (el && val !== undefined) el.value = val;
+    });
+  }
+
   // ── Init ──
   function init() {
     const state = getState();
@@ -2352,6 +2852,8 @@ import logging; logging.info(f'Environment: {self.environment}')</div>
       if (ta && state['notes_' + id]) {
         ta.value = state['notes_' + id];
       }
+      // Restore 5-3-1 reflections
+      loadReflections(id);
     });
     updateProgress();
   }
