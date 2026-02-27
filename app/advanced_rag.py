@@ -167,7 +167,7 @@ class AdvancedRAG(VectorRAG):
         dense_results: List[Tuple[str, float]],
         k: int = 60,
         bm25_weight: float = 0.4,
-    ) -> List[str]:
+    ) -> List[Dict]:
         """
         Combine BM25 and dense results using Reciprocal Rank Fusion.
 
@@ -180,7 +180,7 @@ class AdvancedRAG(VectorRAG):
             bm25_weight: Weight for BM25 scores (0-1)
 
         Returns:
-            Fused and ranked documents
+            Fused and ranked documents with scores
         """
         scores = {}
 
@@ -196,15 +196,15 @@ class AdvancedRAG(VectorRAG):
 
         # Sort by combined score
         ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-        return [doc for doc, _ in ranked]
+        return [{"text": doc, "score": score} for doc, score in ranked]
 
-    def _rerank(self, query: str, documents: List[str], top_k: int = 5) -> List[Dict]:
+    def _rerank(self, query: str, documents: List[Dict], top_k: int = 5) -> List[Dict]:
         """
         Rerank documents using cross-encoder.
 
         Args:
             query: Search query
-            documents: Candidate documents
+            documents: Candidate documents as {text, score} dicts
             top_k: Number of final results
 
         Returns:
@@ -217,7 +217,8 @@ class AdvancedRAG(VectorRAG):
         self._load_reranker()
 
         # Score all pairs
-        pairs = [[query, doc] for doc in documents]
+        texts = [doc["text"] for doc in documents]
+        pairs = [[query, text] for text in texts]
         scores = self.reranker.predict(pairs)
 
         # Sort and return top-k
@@ -225,7 +226,7 @@ class AdvancedRAG(VectorRAG):
 
         sorted_indices = np.argsort(scores)[::-1][:top_k]
         return [
-            {"text": documents[i], "score": float(scores[i])} for i in sorted_indices
+            {"text": texts[i], "score": float(scores[i])} for i in sorted_indices
         ]
 
     @cache_response(ttl=300)
@@ -264,8 +265,8 @@ class AdvancedRAG(VectorRAG):
             reranked = self._rerank(query, fused_docs, top_k=k)
             return {"results": reranked}
         else:
-            # Return top-k fused docs with dummy scores
-            return {"results": [{"text": doc, "score": 0.0} for doc in fused_docs[:k]]}
+            # Return top-k fused docs with real fusion scores
+            return {"results": fused_docs[:k]}
 
 
 # Convenience function for easy migration
