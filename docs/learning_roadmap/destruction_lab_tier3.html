@@ -599,6 +599,40 @@
     box-shadow: 0 0 0 3px rgba(6,182,212,0.15);
   }
   .reflection-input::placeholder { color: #94a3b8; }
+
+  /* ── ShockEngine Styles ── */
+  .shock-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;animation:shock-fade 0.4s ease forwards;}
+  .shock-mild{background:rgba(239,68,68,0.25);}
+  .shock-medium{background:rgba(239,68,68,0.55);}
+  .shock-nuclear{background:rgba(239,68,68,0.80);}
+  @keyframes shock-fade{0%{opacity:1;}100%{opacity:0;}}
+  @keyframes shake{
+    0%,100%{transform:translateX(0) rotate(0deg);}
+    10%,50%,90%{transform:translateX(-10px) rotate(-1.5deg);}
+    20%,60%{transform:translateX(10px) rotate(1.5deg);}
+    30%,70%{transform:translateX(-8px) rotate(-1deg);}
+    40%,80%{transform:translateX(8px) rotate(1deg);}
+  }
+  body.shaking{animation:shake 0.45s ease;}
+  .praise-flash{position:fixed;inset:0;pointer-events:none;z-index:9999;background:rgba(34,197,94,0.35);animation:shock-fade 0.5s ease forwards;}
+  .lockout-msg{background:#fef2f2;border:2px solid #ef4444;border-radius:8px;padding:12px 16px;margin-top:12px;color:#b91c1c;font-weight:600;text-align:center;}
+  .predict-panel{border:2px solid #fbbf24;border-radius:12px;background:#fffbeb;padding:20px;margin-bottom:16px;}
+  .predict-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .predict-badge{background:#f59e0b;color:#fff;font-weight:700;font-size:0.75rem;padding:3px 10px;border-radius:20px;letter-spacing:.05em;}
+  .predict-label{font-weight:600;color:#92400e;font-size:0.9rem;flex:1;}
+  .wrong-tally{font-size:0.78rem;color:#ef4444;font-weight:700;background:#fef2f2;padding:2px 8px;border-radius:12px;}
+  .predict-question{font-weight:600;color:#1e293b;margin-bottom:14px;line-height:1.5;}
+  .predict-option{border:2px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-bottom:8px;cursor:pointer;transition:all .2s;background:#fff;color:#374151;font-size:0.88rem;}
+  .predict-option:hover{border-color:#f59e0b;background:#fffbeb;}
+  .predict-option.selected{border-color:#f59e0b;background:#fef3c7;font-weight:600;}
+  .predict-option.correct-reveal{border-color:#22c55e!important;background:#f0fdf4!important;color:#166534!important;font-weight:700;}
+  .predict-option.wrong-reveal{border-color:#ef4444!important;background:#fef2f2!important;color:#991b1b!important;}
+  .predict-submit{margin-top:10px;padding:9px 22px;background:#f59e0b;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:background .2s;}
+  .predict-submit:disabled{background:#d1d5db;cursor:not-allowed;}
+  .predict-submit:not(:disabled):hover{background:#d97706;}
+  .predict-result{margin-top:10px;font-weight:600;min-height:1.5rem;}
+  .action-gated.locked{filter:blur(3px);pointer-events:none;user-select:none;position:relative;}
+  .action-gated.locked::after{content:"⚡ Answer the prediction to unlock";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#0e7490;font-weight:700;font-size:0.9rem;background:rgba(236,254,255,0.7);border-radius:8px;}
 </style>
 </head>
 <body>
@@ -666,7 +700,21 @@
           <div class="panel-label">Hypothesis</div>
           Without the final <code>raise HTTPException(401)</code>, unauthenticated requests will be granted access as "anonymous" instead of being rejected.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-35" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-35" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Replacing the final raise HTTPException(401) with return "anonymous" means unauthenticated requests do what?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(35,'A')"><strong>A.</strong> Receive a 403 Forbidden instead of a 401 Unauthorized</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(35,'B')"><strong>B.</strong> Are granted access as an anonymous user — authentication is completely bypassed</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(35,'C')"><strong>C.</strong> Trigger a redirect to the login page</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(35,'D')"><strong>D.</strong> Cause a 500 error because "anonymous" is not a valid user object</div>
+          <button class="predict-submit" onclick="submitPrediction(35)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-35" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/auth_mixins.py</code> (line 57). Replace <code>raise HTTPException(401)</code> with <code>return "anonymous"</code>.
           <pre class="code-block"># Before
@@ -803,7 +851,21 @@ return "anonymous"</pre>
           <div class="panel-label">Hypothesis</div>
           Without hash verification, any string prefixed with <code>mr_</code> will be accepted as a valid API key.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-36" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-36" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing the API key hash verification means keys are compared in plain text. What is the security consequence?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(36,'A')"><strong>A.</strong> All API keys stop working because hash comparison is required</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(36,'B')"><strong>B.</strong> Timing attacks become possible — an attacker can infer valid keys character by character</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(36,'C')"><strong>C.</strong> The server raises a ValueError since unhashed keys cannot be looked up</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(36,'D')"><strong>D.</strong> Keys are accepted even when expired because expiry is checked during hashing</div>
+          <button class="predict-submit" onclick="submitPrediction(36)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-36" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/security.py</code> (lines 60&ndash;69). Skip the hash comparison and directly <code>return "verified_user"</code>.
           <pre class="code-block"># Before: hash comparison logic
@@ -938,7 +1000,21 @@ return "verified_user"</pre>
           <div class="panel-label">Hypothesis</div>
           Without the <code>is_active</code> check, revoked API keys will still authenticate successfully.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-37" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-37" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing the revoked key check means what happens when a key marked as revoked is used?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(37,'A')"><strong>A.</strong> The key raises a 410 Gone response since it no longer exists in the database</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(37,'B')"><strong>B.</strong> The revoked key authenticates successfully and the request proceeds normally</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(37,'C')"><strong>C.</strong> The system switches to JWT authentication as a fallback</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(37,'D')"><strong>D.</strong> The request is rate-limited to 1 call per hour instead of being rejected</div>
+          <button class="predict-submit" onclick="submitPrediction(37)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-37" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/security.py</code> (lines 77&ndash;79). Comment out the <code>is_active</code> check.
           <pre class="code-block"># Comment out:
@@ -1074,7 +1150,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without rate limiting, there is no protection against request flooding &mdash; all requests are served regardless of volume.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-38" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-38" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing rate limiter installation from the app startup means the /chat endpoint has what protection?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(38,'A')"><strong>A.</strong> A default 100 req/min rate limit enforced by FastAPI core</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(38,'B')"><strong>B.</strong> No rate limiting — the endpoint can be flooded with unlimited requests</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(38,'C')"><strong>C.</strong> Rate limiting falls back to OS-level TCP connection throttling</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(38,'D')"><strong>D.</strong> The Prometheus metrics endpoint takes over rate limiting duties</div>
+          <button class="predict-submit" onclick="submitPrediction(38)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-38" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/main.py</code> (line 114). Comment out <code>install_rate_limiter(app, settings)</code>.
           <pre class="code-block"># install_rate_limiter(app, settings)</pre>
@@ -1207,7 +1297,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without the <code>exp</code> claim, JWT tokens will never expire and remain valid indefinitely.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-39" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-39" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing JWT expiration from token creation produces tokens that do what?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(39,'A')"><strong>A.</strong> Expire after the default 3600-second Python JWT library default</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(39,'B')"><strong>B.</strong> Never expire — they remain valid forever even after logout or key rotation</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(39,'C')"><strong>C.</strong> Fail immediately because exp is a required JWT claim</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(39,'D')"><strong>D.</strong> Expire when the server restarts since exp defaults to server uptime</div>
+          <button class="predict-submit" onclick="submitPrediction(39)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-39" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/auth.py</code> (lines 89&ndash;91). Comment out the expire and exp update lines.
           <pre class="code-block"># expire = datetime.utcnow() + timedelta(minutes=30)
@@ -1340,7 +1444,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without length validation, dangerously weak secrets like <code>"abc"</code> will be accepted for JWT signing.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-40" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-40" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing SECRET_KEY length validation allows short keys like "abc". Why is this dangerous?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(40,'A')"><strong>A.</strong> Short keys cause the JWT library to raise a SignatureError on every request</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(40,'B')"><strong>B.</strong> Short keys are brute-forceable — an attacker can forge valid JWTs in seconds</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(40,'C')"><strong>C.</strong> The app ignores the SECRET_KEY entirely and uses a random per-session key</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(40,'D')"><strong>D.</strong> Short keys produce JWTs that are too small and rejected by browsers</div>
+          <button class="predict-submit" onclick="submitPrediction(40)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-40" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/auth.py</code> (lines 74&ndash;79). Comment out the length check.
           <pre class="code-block"># if len(secret_key) < 32:
@@ -1473,7 +1591,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without the check, the default placeholder secret (e.g., <code>"changeme"</code>) will be used in production.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-41" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-41" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing the default secret rejection means using SECRET_KEY="changeme" or "secret" in production does what?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(41,'A')"><strong>A.</strong> Causes a startup warning but the app still refuses to issue tokens</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(41,'B')"><strong>B.</strong> Allows well-known default keys — any attacker with a list of defaults can forge tokens</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(41,'C')"><strong>C.</strong> Forces the app into debug mode where all endpoints are open</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(41,'D')"><strong>D.</strong> Resets the key to a secure random value at first request</div>
+          <button class="predict-submit" onclick="submitPrediction(41)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-41" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/auth.py</code> (lines 68&ndash;72). Comment out the changeme check.
           <pre class="code-block"># if secret_key == "changeme":
@@ -1607,7 +1739,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without the tool execution block, the LLM will request tools but they will never actually execute &mdash; intent without action.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-42" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-42" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Destroying the agent tool loop (removing the while loop) means the agent can only take how many actions?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(42,'A')"><strong>A.</strong> Zero — the agent raises an error without the loop</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(42,'B')"><strong>B.</strong> One — it calls one tool then stops, never completing multi-step tasks</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(42,'C')"><strong>C.</strong> Unlimited — without a loop guard the agent runs until context is exhausted</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(42,'D')"><strong>D.</strong> Three — FastAPI enforces a default three-step limit on agent calls</div>
+          <button class="predict-submit" onclick="submitPrediction(42)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-42" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/main.py</code> (lines 189&ndash;215). Comment out the entire tool execution block.
           <pre class="code-block"># Comment out the entire tool execution while-loop
@@ -1743,7 +1889,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without saving messages, the AI will have no memory between requests &mdash; each request is completely isolated.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-43" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-43" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing memory persistence means conversation state is stored only in what?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(43,'A')"><strong>A.</strong> A Redis cache that expires after 24 hours</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(43,'B')"><strong>B.</strong> RAM for the current request only — history is lost when the request ends</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(43,'C')"><strong>C.</strong> The ChromaDB vector store as an additional embedding</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(43,'D')"><strong>D.</strong> The client browser via a cookie</div>
+          <button class="predict-submit" onclick="submitPrediction(43)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-43" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/main.py</code> (lines 267&ndash;268). Comment out the <code>memory.add_message</code> calls.
           <pre class="code-block"># memory.add_message(session_id, "user", message)
@@ -1878,7 +2038,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without hallucination detection, responses will lack confidence scores and quality metrics.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-44" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-44" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing hallucination detection means the confidence score returned to the client is always what?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(44,'A')"><strong>A.</strong> 1.0 — maximum confidence for every response</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(44,'B')"><strong>B.</strong> Absent — the confidence_level field is missing from the API response</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(44,'C')"><strong>C.</strong> 0.0 — responses are marked as unverified by default</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(44,'D')"><strong>D.</strong> Computed by the LLM itself and included in its output text</div>
+          <button class="predict-submit" onclick="submitPrediction(44)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-44" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/main.py</code> (lines 224&ndash;226, 239&ndash;242). Comment out the confidence scoring logic.
           <pre class="code-block"># Comment out confidence score calculation
@@ -2013,7 +2187,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without the validation call, any input &mdash; including script injection &mdash; passes through to the system.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-45" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-45" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing the validate_message call before passing input to the agent means what class of attack is now possible?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(45,'A')"><strong>A.</strong> SQL injection into the SQLite sessions database</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(45,'B')"><strong>B.</strong> Prompt injection — malicious instructions in user input reach the LLM unchecked</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(45,'C')"><strong>C.</strong> Buffer overflow in the FastAPI request parser</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(45,'D')"><strong>D.</strong> XSS via reflected content in the JSON response</div>
+          <button class="predict-submit" onclick="submitPrediction(45)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-45" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/main.py</code> (line 141). Comment out the <code>validate_message</code> call.
           <pre class="code-block"># validate_message(request.message)</pre>
@@ -2147,7 +2335,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without knowledge ingestion at startup, the RAG knowledge base will be completely empty.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-46" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-46" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing knowledge ingestion at startup means the RAG system starts with what in the vector store?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(46,'A')"><strong>A.</strong> The previous session's knowledge base loaded from cache</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(46,'B')"><strong>B.</strong> An empty store — queries return no context until manual ingestion is triggered</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(46,'C')"><strong>C.</strong> A default Chroma sample dataset used as placeholder</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(46,'D')"><strong>D.</strong> All documents loaded lazily on first query</div>
+          <button class="predict-submit" onclick="submitPrediction(46)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-46" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/main.py</code> (lines 280&ndash;283). Comment out the knowledge ingestion block.
           <pre class="code-block"># Comment out the startup knowledge ingestion block
@@ -2283,7 +2485,21 @@ curl -s -H "X-API-Key: mr_revoked_key" http://localhost:8000/api/protected
           <div class="panel-label">Hypothesis</div>
           Without the UUID fallback, requests that omit <code>session_id</code> will get <code>None</code>, causing downstream errors.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-47" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-47" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing the session ID generation fallback means if uuid4() raises an exception, what happens?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(47,'A')"><strong>A.</strong> The system reuses the last valid session ID</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(47,'B')"><strong>B.</strong> An unhandled exception propagates and the request fails with 500</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(47,'C')"><strong>C.</strong> A timestamp-based ID is generated as a built-in Python fallback</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(47,'D')"><strong>D.</strong> The session is created without an ID and stored as null</div>
+          <button class="predict-submit" onclick="submitPrediction(47)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-47" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/main.py</code> (line 262). Remove <code>or str(uuid.uuid4())</code>.
           <pre class="code-block"># Before
@@ -2421,7 +2637,21 @@ session_id = request.session_id</pre>
           <div class="panel-label">Hypothesis</div>
           Without logging, there is no visibility into which LLM provider was tried, succeeded, or failed.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-48" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-48" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing provider logging in ModelRouter means when a provider fails and fallback occurs, what is lost?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(48,'A')"><strong>A.</strong> The response content — logging and response share the same buffer</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(48,'B')"><strong>B.</strong> Observability — there is no record of which provider was used or why fallback happened</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(48,'C')"><strong>C.</strong> The fallback itself — logging triggers the fallback chain</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(48,'D')"><strong>D.</strong> Token count tracking — usage metrics are logged alongside provider info</div>
+          <button class="predict-submit" onclick="submitPrediction(48)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-48" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/llm_providers.py</code> (lines 384, 386, 390). Comment out the <code>logger</code> calls.
           <pre class="code-block"># logger.info(f"Trying provider: {provider}")
@@ -2556,7 +2786,21 @@ session_id = request.session_id</pre>
           <div class="panel-label">Hypothesis</div>
           Without error wrapping, raw <code>sqlite3</code> errors will leak directly to callers, breaking abstraction boundaries.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-49" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-49" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing database error wrapping means SQLite exceptions propagate as what to the API client?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(49,'A')"><strong>A.</strong> A 404 Not Found since the record cannot be retrieved</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(49,'B')"><strong>B.</strong> An unhandled 500 Internal Server Error exposing raw SQLite traceback details</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(49,'C')"><strong>C.</strong> A 503 Service Unavailable with a retry-after header</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(49,'D')"><strong>D.</strong> A silent empty response with status 200</div>
+          <button class="predict-submit" onclick="submitPrediction(49)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-49" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/database.py</code> (lines 81&ndash;83). Comment out the except block that wraps errors.
           <pre class="code-block"># except sqlite3.IntegrityError as e:
@@ -2691,7 +2935,21 @@ session_id = request.session_id</pre>
           <div class="panel-label">Hypothesis</div>
           Without version tracking, there is no way to detect when database schemas need upgrading after code changes.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-50" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-50" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing schema migration version tracking means running migrations twice does what?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(50,'A')"><strong>A.</strong> Raises an IntegrityError and rolls back both runs safely</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(50,'B')"><strong>B.</strong> Applies the migration twice — potentially duplicating columns, indexes, or data</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(50,'C')"><strong>C.</strong> Skips the second run automatically since SQLite detects no schema changes</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(50,'D')"><strong>D.</strong> Corrupts the version table only — the schema itself is unaffected</div>
+          <button class="predict-submit" onclick="submitPrediction(50)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-50" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/database.py</code> (lines 98&ndash;109). Comment out the schema version check block.
           <pre class="code-block"># Comment out the entire schema version tracking block
@@ -2825,7 +3083,21 @@ session_id = request.session_id</pre>
           <div class="panel-label">Hypothesis</div>
           Without the guard, every search call will instantiate a new CrossEncoder model, causing memory to spike repeatedly.
         </div>
-        <div class="panel panel-action">
+        <div id="predict-51" class="predict-panel" data-correct="B">
+          <div class="predict-header">
+            <span class="predict-badge">⚡ Predict</span>
+            <span class="predict-label">Before you break it — what will happen?</span>
+            <span id="tally-51" class="wrong-tally" style="display:none"></span>
+          </div>
+          <p class="predict-question">Removing lazy loading from the AdvancedRAG reranker means the CrossEncoder model loads when?</p>
+          <div class="predict-option" data-val="A" onclick="selectOption(51,'A')"><strong>A.</strong> On the first search query, same as before — Python caches the import</div>
+          <div class="predict-option" data-val="B" onclick="selectOption(51,'B')"><strong>B.</strong> At server startup — blocking initialization and increasing startup time and memory usage</div>
+          <div class="predict-option" data-val="C" onclick="selectOption(51,'C')"><strong>C.</strong> Never — the reranker is disabled if not lazily loaded</div>
+          <div class="predict-option" data-val="D" onclick="selectOption(51,'D')"><strong>D.</strong> In a background thread, causing race conditions on first rerank call</div>
+          <button class="predict-submit" onclick="submitPrediction(51)" disabled>Lock In Answer ⚡</button>
+          <div class="predict-result"></div>
+        </div>
+        <div id="action-panel-51" class="panel panel-action action-gated locked">
           <div class="panel-label">Action</div>
           File: <code>app/advanced_rag.py</code> (lines 68&ndash;71). Remove the <code>if self.reranker is None</code> guard.
           <pre class="code-block"># Before
@@ -3011,6 +3283,103 @@ self.reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")</pre>
     const card = document.querySelector(`.exercise-card[data-id="${id}"]`);
     if (card) card.classList.toggle('completed', checked);
     updateProgress();
+  };
+
+
+  // ── ShockEngine ──
+  const ShockEngine = {
+    wrongCount: JSON.parse(localStorage.getItem('t3_shock_wrongs') || '{}'),
+    _save() { localStorage.setItem('t3_shock_wrongs', JSON.stringify(this.wrongCount)); },
+    trigger(exerciseId, intensity) {
+      this.wrongCount[exerciseId] = (this.wrongCount[exerciseId] || 0) + 1;
+      this._save();
+      const tally = document.getElementById('tally-' + exerciseId);
+      if (tally) { tally.textContent = '⚡ ' + this.wrongCount[exerciseId] + ' wrong'; tally.style.display = 'inline'; }
+      this._visualShock(intensity);
+      this._audioShock(intensity);
+      if (this.wrongCount[exerciseId] >= 3) { this._showLockout(exerciseId); }
+    },
+    _visualShock(intensity) {
+      const cls = intensity === 'mild' ? 'shock-mild' : intensity === 'medium' ? 'shock-medium' : 'shock-nuclear';
+      const el = document.createElement('div');
+      el.className = 'shock-overlay ' + cls;
+      document.body.appendChild(el);
+      document.body.classList.add('shaking');
+      setTimeout(() => { el.remove(); document.body.classList.remove('shaking'); }, 500);
+    },
+    _audioShock(level) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.type = level === 'mild' ? 'sine' : 'sawtooth';
+        osc.frequency.value = level === 'mild' ? 220 : level === 'medium' ? 180 : 120;
+        gain.gain.setValueAtTime(level === 'mild' ? 0.3 : level === 'medium' ? 0.5 : 0.8, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (level === 'mild' ? 0.3 : level === 'medium' ? 0.5 : 0.7));
+        osc.start(); osc.stop(ctx.currentTime + 0.7);
+      } catch(e) {}
+    },
+    _showLockout(exerciseId) {
+      const panel = document.getElementById('predict-' + exerciseId);
+      if (!panel) return;
+      let msg = panel.querySelector('.lockout-msg');
+      if (!msg) {
+        msg = document.createElement('div');
+        msg.className = 'lockout-msg';
+        msg.textContent = '🔒 Nuclear lock! Re-read the hypothesis carefully before trying again.';
+        panel.appendChild(msg);
+      }
+    },
+    praise() {
+      const el = document.createElement('div');
+      el.className = 'praise-flash';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 600);
+    }
+  };
+
+  window.selectOption = function(exerciseId, key) {
+    const panel = document.getElementById('predict-' + exerciseId);
+    if (!panel) return;
+    panel.querySelectorAll('.predict-option').forEach(o => o.classList.remove('selected'));
+    const chosen = panel.querySelector('.predict-option[data-val="' + key + '"]');
+    if (chosen) chosen.classList.add('selected');
+    const btn = panel.querySelector('.predict-submit');
+    if (btn) btn.disabled = false;
+  };
+
+  window.submitPrediction = function(exerciseId) {
+    const panel = document.getElementById('predict-' + exerciseId);
+    if (!panel) return;
+    const correct = panel.dataset.correct;
+    const selected = panel.querySelector('.predict-option.selected');
+    if (!selected) return;
+    const answer = selected.dataset.val;
+    const resultEl = panel.querySelector('.predict-result');
+    panel.querySelectorAll('.predict-option').forEach(o => {
+      o.style.pointerEvents = 'none';
+      if (o.dataset.val === correct) o.classList.add('correct-reveal');
+      else if (o.dataset.val === answer && answer !== correct) o.classList.add('wrong-reveal');
+    });
+    panel.querySelector('.predict-submit').disabled = true;
+    const actionPanel = document.getElementById('action-panel-' + exerciseId);
+    if (answer === correct) {
+      resultEl.innerHTML = '<span style="color:#16a34a">✅ Correct! Action panel unlocked.</span>';
+      ShockEngine.praise();
+      if (actionPanel) actionPanel.classList.remove('locked');
+    } else {
+      const wrongs = (ShockEngine.wrongCount[exerciseId] || 0) + 1;
+      const intensity = wrongs === 1 ? 'mild' : wrongs === 2 ? 'medium' : 'nuclear';
+      ShockEngine.trigger(exerciseId, intensity);
+      resultEl.innerHTML = '<span style="color:#dc2626">⚡ Wrong! Study the hypothesis again.</span>';
+      panel.querySelectorAll('.predict-option').forEach(o => {
+        o.classList.remove('selected', 'wrong-reveal', 'correct-reveal');
+        o.style.pointerEvents = '';
+      });
+      panel.querySelector('.predict-submit').disabled = true;
+      setTimeout(() => { panel.querySelector('.predict-submit').disabled = true; resultEl.innerHTML = ''; }, 1200);
+    }
   };
 
   // ── 5-3-1 Reflection ──
