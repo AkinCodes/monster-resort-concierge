@@ -1,5 +1,8 @@
+import hashlib
 import os
-from typing import Iterable
+import time
+import numpy as np
+from typing import Iterable, List, Optional
 from .monitoring import Counter
 
 RAG_HIT_COUNT = Counter("mrc_rag_hits_total", "Total RAG search hits", ["query"])
@@ -19,6 +22,7 @@ class VectorRAG:
         persist_dir: str,
         collection: str,
         embedding_model: str = "all-MiniLM-L6-v2",
+        ingestion_token: Optional[str] = None,
     ):
         """
         Initialize VectorRAG with HuggingFace embeddings (compatible with ChromaDB 0.5.23).
@@ -27,10 +31,12 @@ class VectorRAG:
             persist_dir: Directory to persist ChromaDB data
             collection: Name of the collection
             embedding_model: HuggingFace model name (default: all-MiniLM-L6-v2)
+            ingestion_token: Defense 3 — token required for ingestion operations
         """
         self.persist_dir = persist_dir
         self.collection_name = collection
         self.embedding_model = embedding_model
+        self._ingestion_token = ingestion_token
 
         # Initialize ChromaDB client
         self.chroma_client = chromadb.PersistentClient(path=persist_dir)
@@ -43,36 +49,85 @@ class VectorRAG:
             ),
         )
 
-    def ingest_texts(self, texts: Iterable[str], *, source: str = "manual") -> int:
+    def _check_ingestion_auth(self, token: Optional[str] = None):
+        """Defense 3: Verify ingestion token before allowing writes."""
+        if self._ingestion_token and token != self._ingestion_token:
+            logger.warning("rag_ingestion_unauthorized", extra={"token_provided": bool(token)})
+            raise AIServiceError("Unauthorized ingestion attempt — valid token required.")
+
+    def _check_embedding_anomaly(self, texts: List[str], threshold: float = 3.0) -> List[bool]:
+        """Defense 5: Flag texts whose embeddings are statistical outliers."""
+        if self.collection.count() < 10:
+            return [False] * len(texts)
+
+        try:
+            existing = self.collection.get(include=["embeddings"], limit=500)
+            existing_embs = np.array(existing.get("embeddings", []))
+
+            if len(existing_embs) == 0:
+                return [False] * len(texts)
+
+            centroid = existing_embs.mean(axis=0)
+            distances = np.linalg.norm(existing_embs - centroid, axis=1)
+            mean_dist = float(distances.mean())
+            std_dist = float(distances.std())
+
+            ef = SentenceTransformerEmbeddingFunction(model_name=self.embedding_model)
+            new_embs = np.array(ef(texts))
+            new_distances = np.linalg.norm(new_embs - centroid, axis=1)
+
+            return [float(d) > mean_dist + threshold * std_dist for d in new_distances]
+        except Exception as e:
+            logger.warning(f"Anomaly detection failed, allowing ingestion: {e}")
+            return [False] * len(texts)
+
+    def ingest_texts(self, texts: Iterable[str], *, source: str = "manual", token: Optional[str] = None) -> int:
         """
         Ingest texts into the vector database.
 
         Args:
             texts: Iterable of text strings to ingest
-            source: Source identifier for metadata // Source = sticky notes on each book
+            source: Source identifier for metadata
+            token: Defense 3 — ingestion authorization token
 
         Returns:
             Number of documents ingested
-
-
-        rag = VectorRAG(persist_dir="./db", collection="Shakespeare")
-        Ingest texts:
-        texts = ["To be, or not to be", "All the world’s a stage"]
-        rag.ingest_texts(texts, source="Hamlet")
         """
-        import uuid
+        # Defense 3: Check ingestion authorization
+        self._check_ingestion_auth(token)
 
-        metadatas = [{"source": source} for _ in texts]
-        ids = [str(uuid.uuid4()) for _ in texts]
+        text_list = list(texts)
+        if not text_list:
+            return 0
+
+        # Defense 5: Check for anomalous embeddings
+        anomalies = self._check_embedding_anomaly(text_list)
+
+        now = time.time()
+        metadatas = [{"source": source} for _ in text_list]
+
+        # Defense 2 & 4: Add content hash, ingestion timestamp, and anomaly flag
+        for i, text in enumerate(text_list):
+            content_hash = hashlib.sha256(text.encode()).hexdigest()
+            metadatas[i]["content_hash"] = content_hash
+            metadatas[i]["ingested_at"] = now
+            if anomalies[i]:
+                metadatas[i]["flagged_anomaly"] = True
+                logger.warning(
+                    "rag_anomalous_embedding",
+                    extra={"source": metadatas[i]["source"], "content_preview": text[:100]},
+                )
+
+        ids = [hashlib.sha256(t.encode()).hexdigest()[:16] for t in text_list]
 
         try:
-            self.collection.add(documents=list(texts), metadatas=metadatas, ids=ids)
+            self.collection.upsert(documents=text_list, metadatas=metadatas, ids=ids)
             return len(ids)
         except Exception as e:
             logger.error(f"ChromaDB ingestion failed: {e}")
             raise AIServiceError(f"ChromaDB ingestion failed: {e}")
 
-    def ingest_folder(self, folder: str) -> int:
+    def ingest_folder(self, folder: str, token: Optional[str] = None) -> int:
         """
         Ingest all .txt files from a folder into the vector database.
 
@@ -96,7 +151,7 @@ class VectorRAG:
                 raise AIServiceError(f"Failed to read file {p}: {e}")
 
         try:
-            return self.ingest_texts(texts, source=f"folder:{folder}")
+            return self.ingest_texts(texts, source=f"folder:{folder}", token=token)
         except Exception as e:
             logger.error(f"Failed to ingest texts from folder {folder}: {e}")
             raise AIServiceError(f"Failed to ingest texts from folder {folder}: {e}")
@@ -120,10 +175,27 @@ class VectorRAG:
             metadatas = results.get("metadatas", [[]])[0]
             scores = results.get("distances", [[]])[0]
 
-            out = [
-                {"text": doc, "meta": meta, "score": float(score)}
-                for doc, meta, score in zip(docs, metadatas, scores)
-            ]
+            out = []
+            for doc, meta, score in zip(docs, metadatas, scores):
+                # Defense 2: Verify content integrity
+                if meta.get("content_hash"):
+                    expected = hashlib.sha256(doc.encode()).hexdigest()
+                    if meta["content_hash"] != expected:
+                        logger.warning(
+                            "rag_integrity_check_failed",
+                            extra={"source": meta.get("source", "unknown")},
+                        )
+                        continue
+
+                # Defense 5: Skip anomaly-flagged chunks
+                if meta.get("flagged_anomaly"):
+                    logger.info(
+                        "rag_skipping_anomalous_chunk",
+                        extra={"source": meta.get("source", "unknown")},
+                    )
+                    continue
+
+                out.append({"text": doc, "meta": meta, "score": float(score)})
 
             if out:
                 RAG_HIT_COUNT.labels(query=query).inc()

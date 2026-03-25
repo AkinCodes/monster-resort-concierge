@@ -13,6 +13,16 @@ from .monitoring import Counter
 
 logger.info("tool_module_initialized")
 
+# Defense 1: Authoritative hotel registry — single source of truth
+VALID_HOTELS = {
+    "The Mummy Resort & Tomb-Service",
+    "The Werewolf Lodge: Moon & Moor",
+    "Castle Frankenstein: High Voltage Luxury",
+    "Vampire Manor: Eternal Night Inn",
+    "Zombie Bed & Breakfast: Brains & Beds",
+    "Ghostly B&B: Spectral Stay",
+}
+
 TOOL_CALL_COUNT = Counter("mrc_tool_calls_total", "Total tool calls", ["tool"])
 
 ToolFn = Callable[..., Any]
@@ -38,14 +48,7 @@ class Tool:
                         "guest_name": {"type": "string"},
                         "hotel_name": {
                             "type": "string",
-                            "enum": [
-                                "The Mummy Resort & Tomb-Service",
-                                "The Werewolf Lodge: Moon & Moor",
-                                "Castle Frankenstein: High Voltage Luxury",
-                                "Vampire Manor: Eternal Night Inn",
-                                "Zombie Bed & Breakfast: Brains & Beds",
-                                "Ghostly B&B: Spectral Stay",
-                            ],
+                            "enum": list(VALID_HOTELS),
                         },
                         "room_type": {"type": "string"},
                         "check_in": {"type": "string"},
@@ -208,6 +211,18 @@ def make_registry(
                 "hotel_name": hotel_name,
             },
         )
+
+        # Defense 1: Reject bookings for unknown hotels
+        if hotel_name not in VALID_HOTELS:
+            logger.warning(
+                "book_room_rejected_invalid_hotel",
+                extra={"hotel_name": hotel_name, "request_id": request_id},
+            )
+            return {
+                "ok": False,
+                "error": f"Invalid hotel: '{hotel_name}'. Must be one of our official properties.",
+                "request_id": request_id,
+            }
 
         try:
             booking = db.create_booking(

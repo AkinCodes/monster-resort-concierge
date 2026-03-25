@@ -26,7 +26,7 @@ from .advanced_rag import AdvancedRAG
 from .security import install_rate_limiter, APIKeyManager
 from .admin_routes import router as admin_router
 from .auth_mixins import jwt_or_api_key
-from .tools import make_registry
+from .tools import make_registry, VALID_HOTELS
 from .llm_providers import (
     ModelRouter,
     LLMMessage,
@@ -51,6 +51,15 @@ from .validation import validate_message
 
 # Initialize Logger
 logger = setup_logging()
+
+
+def _validate_tool_call(tool_name: str, tool_args: dict) -> tuple[bool, str]:
+    """Defense 6: Validate tool call arguments against authoritative registries."""
+    if tool_name == "book_room":
+        hotel = tool_args.get("hotel_name", "")
+        if hotel not in VALID_HOTELS:
+            return False, f"Blocked: unknown hotel '{hotel}'. Not in official registry."
+    return True, ""
 
 
 def _build_router(settings) -> ModelRouter | None:
@@ -103,6 +112,7 @@ def build_app() -> FastAPI:
         settings.rag_collection,
         embedding_model=getattr(settings, "embedding_model", "all-MiniLM-L6-v2"),
         reranker_model="BAAI/bge-reranker-base",
+        ingestion_token=settings.rag_ingestion_token,
     )
 
     memory = MemoryStore(db=db)
@@ -144,8 +154,15 @@ def build_app() -> FastAPI:
                 return {"message": "AI services are offline.", "tool_calls": []}
 
             knowledge = rag.search(user_text)
-            rag_contexts = [r["text"] for r in knowledge.get("results", [])]
-            context_text = "\n".join(rag_contexts)
+            results = knowledge.get("results", [])
+            rag_contexts = [r["text"] for r in results]
+
+            # Defense 4: Source attribution — tag each context with its source
+            context_lines = []
+            for r in results:
+                source = r.get("meta", {}).get("source", "unknown")
+                context_lines.append(f"[Source: {source}] {r['text']}")
+            context_text = "\n".join(context_lines)
 
             current_date_str = datetime.now().strftime("%Y-%m-%d")
 
@@ -201,6 +218,21 @@ def build_app() -> FastAPI:
                     t_name = tc.name
                     t_args = json.loads(tc.arguments)
                     print(f"DEBUG: AI calling tool '{t_name}' with args: {t_args}")
+
+                    # Defense 6: Validate tool call before execution
+                    is_valid, error_msg = _validate_tool_call(t_name, t_args)
+                    if not is_valid:
+                        logger.warning(f"tool_call_blocked: {t_name} — {error_msg}")
+                        res = {"ok": False, "error": error_msg, "blocked": True}
+                        tool_results.append({"tool": t_name, "result": res})
+                        chat_history.append(
+                            LLMMessage(
+                                role="tool",
+                                content=json.dumps(res),
+                                tool_call_id=tc.id,
+                            )
+                        )
+                        continue
 
                     res = await registry.async_execute_with_timing(t_name, **t_args)
                     print(f"DEBUG: Tool '{t_name}' returned: {res}")
@@ -280,7 +312,7 @@ def build_app() -> FastAPI:
     knowledge_path = os.path.join(os.getcwd(), "data", "knowledge")
     if os.path.exists(knowledge_path):
         logger.info(f"Ingesting knowledge from {knowledge_path}...")
-        rag.ingest_folder(knowledge_path)
+        rag.ingest_folder(knowledge_path, token=settings.rag_ingestion_token)
 
     return app
 

@@ -41,6 +41,7 @@ class AdvancedRAG(VectorRAG):
         collection: str,
         embedding_model: str = "all-MiniLM-L6-v2",
         reranker_model: str = "BAAI/bge-reranker-base",
+        ingestion_token: str | None = None,
     ):
         """
         Initialize Advanced RAG system.
@@ -50,8 +51,9 @@ class AdvancedRAG(VectorRAG):
             collection: Collection name
             embedding_model: HuggingFace embedding model
             reranker_model: Cross-encoder model for reranking
+            ingestion_token: Token required for ingestion operations
         """
-        super().__init__(persist_dir, collection, embedding_model)
+        super().__init__(persist_dir, collection, embedding_model, ingestion_token=ingestion_token)
 
         # BM25 components
         self.corpus: List[str] = []
@@ -70,19 +72,20 @@ class AdvancedRAG(VectorRAG):
         if self.reranker is None:
             self.reranker = CrossEncoder(self.reranker_model)
 
-    def ingest_texts(self, texts: List[str], *, source: str = "manual") -> int:
+    def ingest_texts(self, texts: List[str], *, source: str = "manual", token: Optional[str] = None) -> int:
         """
         Ingest texts and build both dense and BM25 indices.
 
         Args:
             texts: List of text documents
             source: Source identifier
+            token: Ingestion authorization token
 
         Returns:
             Number of documents ingested
         """
         # Store in vector DB (parent class)
-        count = super().ingest_texts(texts, source=source)
+        count = super().ingest_texts(texts, source=source, token=token)
 
         # Build BM25 index
         self.corpus.extend(texts)
@@ -92,7 +95,7 @@ class AdvancedRAG(VectorRAG):
         logger.info(f"Built BM25 index with {len(self.corpus)} documents")
         return count
 
-    def ingest_folder(self, folder: str) -> int:
+    def ingest_folder(self, folder: str, token: Optional[str] = None) -> int:
         """
         Ingest folder and build indices.
 
@@ -118,7 +121,7 @@ class AdvancedRAG(VectorRAG):
                 logger.error(f"Failed to read {p}: {e}")
 
         if texts:
-            return self.ingest_texts(texts, source=folder)
+            return self.ingest_texts(texts, source=folder, token=token)
         return 0
 
     def _bm25_search(self, query: str, k: int = 20) -> List[Tuple[int, float]]:

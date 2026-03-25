@@ -70,6 +70,12 @@ class Settings(BaseSettings):
     )
     rate_limit_per_minute: int = 60
 
+    # RAG Ingestion Security (Defense 3)
+    rag_ingestion_token: str = Field(
+        default_factory=lambda: secrets.token_urlsafe(32),
+        description="Token required for RAG ingestion operations",
+    )
+
     # PDFs
     pdf_output_dir: str = "./generated_pdfs"
 
