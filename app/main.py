@@ -126,7 +126,7 @@ def build_app() -> FastAPI:
 
     @app.get("/health")
     def health():
-        return {"status": "alive", "service": settings.app_name}
+        return {"ok": True, "app": settings.app_name, "status": "alive"}
 
     # Build multi-model router
     router = _build_router(settings)

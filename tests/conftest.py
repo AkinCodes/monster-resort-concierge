@@ -61,4 +61,7 @@ def client(tmp_dir, monkeypatch):
         monkeypatch.setenv("OPENAI_API_KEY", "test-key-placeholder")
     
     app = build_app()
-    return TestClient(app)
+    client = TestClient(app)
+    api_key = os.getenv("MRC_API_KEY", "dummy")
+    client.headers["Authorization"] = f"Bearer {api_key}"
+    return client
