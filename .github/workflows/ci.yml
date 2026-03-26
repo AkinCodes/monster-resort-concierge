@@ -34,7 +34,7 @@ jobs:
           flake8 app tests --max-line-length=120 --extend-ignore=E501,W293,W291,F401,E402,E231,E266,F811,F841
       - name: Run tests
         env:
-          MRC_ENVIRONMENT: test
+          MRC_ENVIRONMENT: dev
           MRC_DATABASE_URL: sqlite:///./test_ci.db
           MRC_OPENAI_API_KEY: dummy
           MRC_API_KEY: dummy
