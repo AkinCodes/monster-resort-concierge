@@ -64,7 +64,7 @@ def predict(message, history, session_id):
     # Make the API call
     url = "http://127.0.0.1:8000/chat"
     headers = {
-        "Authorization": "Bearer 6f2b8e3a9d1c4f5b2a8e7d9c1b0a3f4e5d6c7b8a9f0e1d2c3b4a5f6e7d8c9b0",
+        "Authorization": f"Bearer {os.environ.get('MRC_API_KEY', 'your-api-key-here')}",
         "Content-Type": "application/json",
     }
     payload = {"message": message, "session_id": session_id}

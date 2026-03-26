@@ -19,7 +19,7 @@ VALID_HOTELS = {
     "The Werewolf Lodge: Moon & Moor",
     "Castle Frankenstein: High Voltage Luxury",
     "Vampire Manor: Eternal Night Inn",
-    "Zombie Bed & Breakfast: Brains & Beds",
+    "Zombie Bed & Breakfast: Bites & Beds",
     "Ghostly B&B: Spectral Stay",
 }
 

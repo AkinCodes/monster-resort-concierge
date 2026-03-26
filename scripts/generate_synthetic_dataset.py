@@ -84,7 +84,7 @@ PROPERTIES = {
         "check_in": "After Sunset",
         "check_out": "Before Dawn",
     },
-    "Zombie Bed & Breakfast: Brains & Beds": {
+    "Zombie Bed & Breakfast: Bites & Beds": {
         "rating": "3/5 Brains",
         "features": [
             "Shamble Suites",
