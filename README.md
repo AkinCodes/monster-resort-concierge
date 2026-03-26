@@ -12,6 +12,10 @@
 
 This isn't a wrapper around an API call. It's a fully wired backend: retrieval pipeline, agent loop, tool execution, hallucination scoring, conversation memory, database persistence, and CI/CD to AWS -- built to demonstrate how these systems work together in production.
 
+<p align="center">
+  <img src="assets/chat_ui.png" alt="Monster Resort Concierge Chat UI" width="700" />
+</p>
+
 ---
 
 ## What the Agent Actually Does
