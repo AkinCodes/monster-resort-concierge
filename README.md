@@ -18,6 +18,8 @@ This isn't a wrapper around an API call. It's a fully wired backend: retrieval p
 
 ```
 Guest: "What's the spa situation at the Mummy Resort? Asking for a friend who's been wrapped up in work lately."
+Guest: "Do you have WiFi at the Ghostly B&B? I need to ghost someone on social media."
+Guest: "Book me a room at Werewolf Lodge -- but not during full moon, I shed everywhere."
 ```
 
 1. Message is validated, sanitized, and authenticated (JWT or API key)
