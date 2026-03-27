@@ -6,14 +6,14 @@
   <img src="https://img.shields.io/badge/AWS_ECS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
 </p>
 
-# Monster Resort Concierge
+# Monster Game Resort Concierge
 
 **A production-grade AI concierge system** that serves six fictional monster-themed resort properties. Guests chat with a gothic-persona agent that retrieves answers from a 7,000+ word knowledge base using hybrid RAG, books rooms via function-calling tools, generates PDF receipts, detects hallucinations in real time, and falls back across three LLM providers automatically -- all behind JWT auth, rate limiting, and Prometheus observability.
 
 This isn't a wrapper around an API call. It's a fully wired backend: retrieval pipeline, agent loop, tool execution, hallucination scoring, conversation memory, database persistence, and CI/CD to AWS -- built to demonstrate how these systems work together in production.
 
 <p align="center">
-  <img src="assets/chat_ui.png" alt="Monster Resort Concierge Chat UI" width="700" />
+  <img src="assets/chat_ui.png" alt="Monster Game Resort Concierge Chat UI" width="700" />
 </p>
 
 ---
