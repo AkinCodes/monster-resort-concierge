@@ -268,8 +268,8 @@ deploy/aws/              # ECS task definition, ECR push, deploy scripts
 
 ```bash
 # Clone
-git clone https://github.com/AkinCodes/monster-resort-concierge.git
-cd monster-resort-concierge
+git clone https://github.com/AkinCodes/monster-game-resort-concierge.git
+cd monster-game-resort-concierge
 
 # Environment
 uv venv && source .venv/bin/activate
